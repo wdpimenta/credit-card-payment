@@ -12,15 +12,13 @@ public class ConfigurePinPed {
 
     public void configurePinPed(Configuration configuration) {
         logger.info("Start pin ped configuration");
+        CliSiTefFactory.getFactory().setConfigure(configuration);
         jCliSiTefI cliSiTef = CliSiTefFactory.getFactory().getCliSiTef();
-        cliSiTef.SetEnderecoSiTef(configuration.getIp());
-        cliSiTef.SetCodigoLoja(configuration.getCompany());
-        cliSiTef.SetNumeroTerminal(configuration.getTerminal());
-        cliSiTef.SetConfiguraResultado(ConfigurationRoutineResponse.SUCESSO.get());
 
         var returnPinPad = ConfigurationRoutineResponse.findByCode(cliSiTef.ConfiguraIntSiTefInterativo());
         logger.info("Configuration response '{}'", returnPinPad);
         if (returnPinPad != ConfigurationRoutineResponse.SUCESSO) {
+            logger.error("Error '{}'", returnPinPad);
             throw new ConfigurationPinPedException("Erro '" + returnPinPad.name() + "' ao configurar o Pin Ped");
         }
     }

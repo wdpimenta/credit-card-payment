@@ -1,5 +1,7 @@
 package br.com.credit.card.payment.factory;
 
+import br.com.credit.card.payment.config.Configuration;
+import br.com.credit.card.payment.response.ConfigurationRoutineResponse;
 import softwareexpress.sitef.jCliSiTefI;
 
 public class CliSiTefFactory {
@@ -19,5 +21,12 @@ public class CliSiTefFactory {
 
     public jCliSiTefI getCliSiTef() {
         return cliSiTefI;
+    }
+
+    public void setConfigure(Configuration configuration) {
+        cliSiTefI.SetEnderecoSiTef(configuration.getIp());
+        cliSiTefI.SetCodigoLoja(configuration.getCompany());
+        cliSiTefI.SetNumeroTerminal(configuration.getTerminal());
+        cliSiTefI.SetConfiguraResultado(ConfigurationRoutineResponse.SUCESSO.get());
     }
 }
