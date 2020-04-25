@@ -1,8 +1,8 @@
 package br.com.credit.card.payment.response;
 
-import br.com.credit.card.payment.exception.NaoEncontradoException;
+import br.com.credit.card.payment.exception.NotFoundException;
 
-public enum CodigoDeFuncao {
+public enum CodeFunction {
     PERMITE_QUE_O_OPERADOR_ESCOLHA_A_FORMA_DE_PAGAMENTO(0),
     CHEQUE(1),
     DEBITO(2),
@@ -49,20 +49,20 @@ public enum CodigoDeFuncao {
     CANCELAMENTO_DE_RESGATE_DE_PRONTO_CARTAO_BONUS(255),
     ACUMULO_DE_PONTOS_CARTAO_BONUS(256);
 
-    public static CodigoDeFuncao findCodigoDeFuncaoByName(String name) {
-        for (CodigoDeFuncao value : values()) {
-            if (value.name().contains(name))
+    public static CodeFunction findCodeFunctionByName(String name) {
+        for (CodeFunction value : values()) {
+            if (value.name().equals(name))
                 return value;
         }
-        throw new NaoEncontradoException("Nao pode ser encontrado codigo de funcao com o nome '" + name+"'");
+        throw new NotFoundException("Nao pode ser encontrado codigo de funcao com o nome '" + name + "'");
     }
 
-    public static CodigoDeFuncao findCodigoDeFuncaoByCodigo(int codigo) {
-        for (CodigoDeFuncao value : values()) {
-            if (value.get() == codigo)
+    public static CodeFunction findCodeFunctionByCode(int code) {
+        for (CodeFunction value : values()) {
+            if (value.get() == code)
                 return value;
         }
-        throw new NaoEncontradoException("Codigo de funcao '" + codigo + "' desconhecido");
+        throw new NotFoundException("Codigo de funcao '" + code + "' desconhecido");
     }
 
 
@@ -209,7 +209,7 @@ public enum CodigoDeFuncao {
 
     private final int codigo;
 
-    CodigoDeFuncao(int codigo) {
+    CodeFunction(int codigo) {
         this.codigo = codigo;
     }
 
