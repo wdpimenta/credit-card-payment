@@ -1,4 +1,4 @@
-package br.com.credit.card.payment.response;
+package br.com.credit.card.payment.comunication;
 
 import br.com.credit.card.payment.exception.NotFoundException;
 

@@ -1,12 +1,13 @@
 package br.com.credit.card.payment.response;
 
+import br.com.credit.card.payment.comunication.CodeFunction;
 import br.com.credit.card.payment.exception.NotFoundException;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static br.com.credit.card.payment.response.CodeFunction.findCodeFunctionByCode;
-import static br.com.credit.card.payment.response.CodeFunction.findCodeFunctionByName;
+import static br.com.credit.card.payment.comunication.CodeFunction.findCodeFunctionByCode;
+import static br.com.credit.card.payment.comunication.CodeFunction.findCodeFunctionByName;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
